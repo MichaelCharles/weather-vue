@@ -1,8 +1,5 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  
 </template>
 
 <script>
@@ -12,17 +9,15 @@ export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  mounted() {
+    axios.get('https://api.openweathermap.org/data/2.5/weather?lat=40.7&lon=74.1&APPID=7271d3292aac8f43062a11e66a3aa1b0').then((response)=>{
+      console.log(response);
+    })
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
