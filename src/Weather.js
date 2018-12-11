@@ -1,18 +1,9 @@
 export default class Weather {
   constructor() {
     this.temp = {
-      k: {
-        value: 0,
-        string: ""
-      },
-      c: {
-        value: 0,
-        string: ""
-      },
-      f: {
-        value: 0,
-        string: ""
-      }
+      k: 0,
+      c: 0,
+      f: 0
     };
     this.type = {blurb:"",icon:""};
   }
@@ -20,18 +11,9 @@ export default class Weather {
     let temp = data.main.temp;
     let id = data.weather[0].id;
     this.temp = {
-      k: {
-        value: temp,
-        string: temp + "°K"
-      },
-      c: {
-        value: this.kelvinToCelsius(temp),
-        string: this.kelvinToCelsius(temp) + "°C"
-      },
-      f: {
-        value: this.kelvinToFahrenheit(temp),
-        string: this.kelvinToFahrenheit(temp) + "°F"
-      }
+      k: temp,
+      c: this.kelvinToCelsius(temp),
+      f: this.kelvinToFahrenheit(temp)
     };
     this.type = this.parseWeatherId(id);
   }

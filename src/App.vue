@@ -10,11 +10,11 @@
         <div class="temp-column">
           {{ location.name }}
           <div v-if="isCelsius" @click="this.toggleScale" class="temp-area">
-            <span class="temp">{{ weather.temp.c.value }}</span>
+            <span class="temp">{{ weather.temp.c }}</span>
             <span class="scale">°C</span>
           </div>
           <div v-if="!isCelsius" @click="this.toggleScale" class="temp-area">
-            <span class="temp">{{ weather.temp.f.value }}</span>
+            <span class="temp">{{ weather.temp.f }}</span>
             <span class="scale">°F</span>
           </div>
           {{ weather.type.blurb }}
@@ -90,7 +90,7 @@ export default {
   methods: {
     refreshMessage(temp) {
       this.message = this.repo.getMessage(
-        Math.round(!temp ? temp : this.weather.temp.c.value)
+        Math.round(!temp ? temp : this.weather.temp.c)
       );
     },
     toggleScale() {
@@ -115,7 +115,7 @@ export default {
         .then(response => {
           this.location.update({ name: response.data.name });
           this.weather.update(response.data);
-          this.refreshMessage(this.weather.temp.c.value);
+          this.refreshMessage(this.weather.temp.c);
         });
     }
   }
