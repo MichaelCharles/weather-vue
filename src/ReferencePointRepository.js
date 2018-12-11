@@ -86,7 +86,7 @@ export default class ReferencePointRepository {
           "Normal Texas summer.",
           "Feels like hell.",
           "Hot California summer.",
-          "This temperature is Why I don't live in Texas.",
+          "This temperature is why I don't live in Texas.",
           "Too warm to play soccer.",
           "If it's a dry heat, it's bearable.",
           "Going to the beach would be lovely.",
@@ -123,7 +123,7 @@ export default class ReferencePointRepository {
         minTemp: 36,
         reference: [
           "Good day to be inside.",
-          "Do not wear more than t-shirt and shorts.",
+          "Do not wear more than a t-shirt and shorts.",
           "Not so bad for a Texas summer.",
           "Maybe you should just go naked today.",
           "A very hot summer day.",
@@ -538,8 +538,8 @@ export default class ReferencePointRepository {
         maxTemp: -16,
         minTemp: -20,
         reference: [
-          "Eighteen coats and four pairs of socks",
-          "Proof that the Farenheit system does too go down to 0!",
+          "Eighteen coats and four pairs of socks.",
+          "Proof that the Farenheit system does go down to 0!",
           "If school isn't canceled it is criminal.",
           "Far too cold to go out.",
           "Your heating bill is going to feel this.",
@@ -735,7 +735,7 @@ export default class ReferencePointRepository {
           "Show no exposed skin outdoors. Mask, scarf, balaclava and goggles required.",
           "Skyrim belongs to the Nords!",
           "Vodka freezes. Stay inside and cry.",
-          "Very dead. several inches of ice coating on all sides.",
+          "Very dead. Several inches of ice coating on all sides.",
           "Pretty cold even for Antartica."
         ]
       },
