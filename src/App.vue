@@ -202,31 +202,12 @@ a:hover {
   font-size: 1.5em;
   margin-top: 0.3em;
 }
-@media (max-width: 400px) {
-  .flex-wrapper {
-    display: block;
-  }
-  .app-container {
-    padding-bottom: 1em;
-  }
-  .row-wrapper {
-    display: block;
-  }
-  .desc-column {
-    border-top: 1px #444 solid;
-  }
-  .desc-column p {
-    border-left: 0px;
-    padding: 0;
-  }
-}
 
 .loading {
   background: #212121;
   z-index: 99;
   text-align: center;
   border-left: 1px solid #444;
-  border-bottom: 1px solid #444;
   padding: 2em;
 }
 
@@ -249,5 +230,27 @@ a:hover {
   font-style: italic;
   max-width: 300px;
   text-align:left;
+}
+
+@media (max-width: 400px) {
+  .flex-wrapper {
+    display: block;
+  }
+  .app-container {
+    padding-bottom: 1em;
+  }
+  .row-wrapper {
+    display: block;
+  }
+  .desc-column {
+    border-top: 1px #444 solid;
+  }
+  .desc-column p {
+    border-left: 0px;
+    padding: 0;
+  }
+  .loading {
+    border-left: 0px;
+  }
 }
 </style>
