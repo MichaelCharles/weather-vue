@@ -5,7 +5,7 @@ export default class Weather {
       c: 0,
       f: 0
     };
-    this.type = {blurb:"",icon:""};
+    this.blurb = "";
   }
   update(data) {
     let temp = data.main.temp;
@@ -15,7 +15,7 @@ export default class Weather {
       c: this.kelvinToCelsius(temp),
       f: this.kelvinToFahrenheit(temp)
     };
-    this.type = this.parseWeatherId(id);
+    this.blurb = this.parseWeatherId(id);
   }
   kelvinToCelsius(temp) {
     return Math.round((temp - 273.15) * 10) / 10;
@@ -27,161 +27,161 @@ export default class Weather {
     switch (id) {
       // Group 2xx: Thunderstorm
       case 200:
-        return {blurb: "Thunderstorm with light rain.", icon: "wi-thunderstorm"};
+        return "Thunderstorm with light rain.";
       case 201:
-        return {blurb: "Thunderstorm with rain.", icon: "wi-thunderstorm"};
+        return "Thunderstorm with rain.";
       case 202:
-        return {blurb: "Thunderstorm with heavy rain.", icon: "wi-thunderstorm"};
+        return "Thunderstorm with heavy rain.";
       case 210:
-        return {blurb: "Light thunderstorm.", icon: "wi-thunderstorm"};
+        return "Light thunderstorm.";
       case 211:
-        return {blurb: "Thunderstorm.", icon: "wi-thunderstorm"};
+        return "Thunderstorm.";
       case 212:
-        return {blurb: "Heavy thunderstorm.", icon: "wi-thunderstorm"};
+        return "Heavy thunderstorm.";
       case 221:
-        return {blurb: "Ragged thunderstorm.", icon: "wi-thunderstorm"};
+        return "Ragged thunderstorm.";
       case 230:
-        return {blurb: "Thunderstorm with light drizzle.", icon: "wi-thunderstorm"};
+        return "Thunderstorm with light drizzle.";
       case 231:
-        return {blurb: "Thunderstorm with drizzle.", icon: "wi-thunderstorm"};
+        return "Thunderstorm with drizzle.";
       case 232:
-        return {blurb: "Thunderstorm with heavy drizzle.", icon: "wi-thunderstorm"};
+        return "Thunderstorm with heavy drizzle.";
       // Group 3xx: Drizzle
       case 300:
-        return {blurb: "Light intensity drizzle.", icon: "wi-raindrops"};
+        return "Light intensity drizzle.";
       case 301:
-        return {blurb: "Drizzle.", icon: "wi-raindrops"};
+        return "Drizzle.";
       case 302:
-        return {blurb: "Heavy intensity drizzle.", icon: "wi-showers"};
+        return "Heavy intensity drizzle.";
       case 310:
-        return {blurb: "Light drizzle rain.", icon: "wi-raindrops"};
+        return "Light drizzle rain.";
       case 311:
-        return {blurb: "Drizzle rain.", icon: "wi-raindrops"};
+        return "Drizzle rain.";
       case 312:
-        return {blurb: "High intensity drizzle rain.", icon: "wi-showers"};
+        return "High intensity drizzle rain.";
       case 313:
-        return {blurb: "Rain and drizzle.", icon: "wi-showers"};
+        return "Rain and drizzle.";
       case 314:
-        return {blurb: "Heavy shower rain and drizzle.", icon: "wi-showers"};
+        return "Heavy shower rain and drizzle.";
       case 321:
-        return {blurb: "Shower drizzle.", icon: "wi-showers"};
+        return "Shower drizzle.";
       // Group 5xx: Rain
       case 500:
-        return {blurb: "Light rain.", icon: "wi-rain"};
+        return "Light rain.";
       case 501:
-        return {blurb: "Moderate rain.", icon: "wi-rain"};
+        return "Moderate rain.";
       case 502:
-        return {blurb: "High intensity rain.", icon: "wi-rain"};
+        return "High intensity rain.";
       case 503:
-        return {blurb: "Very heavy rain.", icon: "wi-rain"};
+        return "Very heavy rain.";
       case 504:
-        return {blurb: "Extreme rain.", icon: "wi-rain"};
+        return "Extreme rain.";
       case 511:
-        return {blurb: "Freezing rain.", icon: "wi-rain"};
+        return "Freezing rain.";
       case 520:
-        return {blurb: "Low intensity shower.", icon: "wi-showers"};
+        return "Low intensity shower.";
       case 521:
-        return {blurb: "Shower rain.", icon: "wi-showers"};
+        return "Shower rain.";
       case 522:
-        return {blurb: "Heavy intensity shower rain.", icon: "wi-showers"};
+        return "Heavy intensity shower rain.";
       case 531:
-        return {blurb: "Ragged shower rain.", icon: "wi-showers"};
+        return "Ragged shower rain.";
       // Group 6xx: Snow
       case 600:
-        return {blurb: "Light snow.", icon: "wi-snow"};
+        return "Light snow.";
       case 601:
-        return {blurb: "Snow.", icon: "wi-snow"};
+        return "Snow.";
       case 602:
-        return {blurb: "Heavy snow.", icon: "wi-snow"};
+        return "Heavy snow.";
       case 611:
-        return {blurb: "Sleet.", icon: "wi-sleet"};
+        return "Sleet.";
       case 612:
-        return {blurb: "Shower sleet.", icon: "wi-sleet"};
+        return "Shower sleet.";
       case 615:
-        return {blurb: "Light rain and snow.", icon: "wi-snow"};
+        return "Light rain and snow.";
       case 616:
-        return {blurb: "Rain and snow.", icon: "wi-snow"};
+        return "Rain and snow.";
       case 620:
-        return {blurb: "Light shower snow.", icon: "wi-snow"};
+        return "Light shower snow.";
       case 621:
-        return {blurb: "Shower snow.", icon: "wi-snow"};
+        return "Shower snow.";
       case 622:
-        return {blurb: "heavy shower snow.", icon: "wi-snow"};
+        return "heavy shower snow.";
       // Group 7xx: Atmosphere
       case 701:
-        return {blurb: "Mist.", icon: "wi-fog"};
+        return "Mist.";
       case 711:
-        return {blurb: "Smoke.", icon: "wi-smoke"};
+        return "Smoke.";
       case 721:
-        return {blurb: "Haze.", icon: "wi-day-haze"};
+        return "Haze.";
       case 731:
-        return {blurb: "Sand, dust whirls.", icon: "wi-sandstorm"};
+        return "Sand, dust whirls.";
       case 741:
-        return {blurb: "Fog.", icon: "wi-fog"};
+        return "Fog.";
       case 751:
-        return {blurb: "Sand.", icon: "wi-sandstorm"};
+        return "Sand.";
       case 761:
-        return {blurb: "Dust.", icon: "wi-dust"};
+        return "Dust.";
       case 762:
-        return {blurb: "Volcanic ash.", icon: "wi-valcano"};
+        return "Volcanic ash.";
       case 771:
-        return {blurb: "Squalls.", icon: "wi-cloudy-gusts"};
+        return "Squalls.";
       case 781:
-        return {blurb: "Tornado.", icon: "wi-tornado"};
+        return "Tornado.";
       // Group 800: Clear
       case 800:
-        return {blurb: "Clear.", icon: "wi-day-sunny"};
+        return "Clear.";
       // Group 80x: Clouds
       case 801:
-        return {blurb: "Few clouds.", icon: "wi-cloud"};
+        return "Few clouds.";
       case 802:
-        return {blurb: "Scattered clouds.", icon: "wi-cloud"};
+        return "Scattered clouds.";
       case 803:
-        return {blurb: "Broken clouds.", icon: "wi-cloud"};
+        return "Broken clouds.";
       case 804:
-        return {blurb: "Overcast.", icon: "wi-cloudy"};
+        return "Overcast.";
       // Group 90x: Extreme
       case 900:
-        return {blurb: "Tornado.", icon: "wi-tornado"};
+        return "Tornado.";
       case 901:
-        return {blurb: "Tropical storm.", icon: "wi-storm-warning"};
+        return "Tropical storm.";
       case 902:
-        return {blurb: "Hurricane.", icon: "wi-hurricane"};
+        return "Hurricane.";
       case 903:
-        return {blurb: "Cold.", icon: "wi-snowflake-cold"};
+        return "Cold.";
       case 904:
-        return {blurb: "Hot.", icon: "wi-hot"};
+        return "Hot.";
       case 905:
-        return {blurb: "Windy.", icon: "wi-windy"};
+        return "Windy.";
       case 906:
-        return {blurb: "Hail.", icon: "wi-hail"};
+        return "Hail.";
       // Group 9xx: Additional
       case 951:
-        return {blurb: "Calm.", icon: "wi-hail"};
+        return "Calm.";
       case 952:
-        return {blurb: "Light breeze.", icon: "wi-hail"};
+        return "Light breeze.";
       case 953:
-        return {blurb: "Gentle breeze.", icon: "wi-hail"};
+        return "Gentle breeze.";
       case 954:
-        return {blurb: "Moderate breeze.", icon: "wi-hail"};
+        return "Moderate breeze.";
       case 955:
-        return {blurb: "Fresh breeze.", icon: "wi-hail"};
+        return "Fresh breeze.";
       case 956:
-        return {blurb: "Strong breeze.", icon: "wi-hail"};
+        return "Strong breeze.";
       case 957:
-        return {blurb: "High winds.", icon: "wi-hail"};
+        return "High winds.";
       case 958:
-        return {blurb: "Gale.", icon: "wi-hail"};
+        return "Gale.";
       case 959:
-        return {blurb: "Severe gale.", icon: "wi-hail"};
+        return "Severe gale.";
       case 960:
-        return {blurb: "Storm.", icon: "wi-hail"};
+        return "Storm.";
       case 961:
-        return {blurb: "Violent storm.", icon: "wi-hail"};
+        return "Violent storm.";
       case 962:
-        return {blurb: "Hurricane.", icon: "wi-hurricane"};
+        return "Hurricane.";
       default:
-        return {blurb: "Not available.", icon: "wi-na"};
+        return "Not available.";
     }
   }
 }

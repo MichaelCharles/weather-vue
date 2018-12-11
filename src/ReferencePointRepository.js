@@ -199,7 +199,7 @@ export default class ReferencePointRepository {
           "Not pleasant unless there's a breeze.",
           "Normal summer day in Florida.",
           "A serious heat wave in Maine.",
-          "Mildly bearable but still <em>hot</em>.",
+          "Mildly bearable but still hot.",
           "Hot. Stay hydrated.",
           "Summer high, torture every year.",
           "The temperature at which self-hate is most pungent.",
@@ -367,7 +367,7 @@ export default class ReferencePointRepository {
         minTemp: 6,
         reference: [
           "Don your coat, it's getting chilly.",
-          "That's <em>two</em> sweatshirts now.",
+          "That's two sweatshirts now.",
           "Canada.",
           "Warm winter, cold spring.",
           "It's time to start using the fireplace.",

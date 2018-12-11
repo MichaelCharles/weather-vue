@@ -1,11 +1,9 @@
 <template>
   <div class="flex-wrapper">
-    <div class="app-container">
+    <div v-if="message.length > 0" class="app-container">
       <div class="message-container" @click="this.refreshMessage">
-        <p class="message-text">
-          {{ message }}
-          </p>
-        </div>
+        <p class="message-text">{{ message }}</p>
+      </div>
       <div class="row-wrapper">
         <div class="temp-column">
           {{ location.name }}
@@ -17,7 +15,7 @@
             <span class="temp">{{ weather.temp.f }}</span>
             <span class="scale">°F</span>
           </div>
-          {{ weather.type.blurb }}
+          {{ weather.blurb }}
         </div>
         <div class="desc-column">
           <p>
@@ -44,6 +42,15 @@
         </div>
       </div>
     </div>
+    <div v-else class="loading">
+      <div class="loading-circle"></div>
+      <p class="loading-text">Loading...</p>
+      <p
+        class="location-warning"
+      >For accurate weather reporting please click "Allow" to share your precise location.
+        <a href="#" @click="this.useIp">Click here</a> to use IP based location tracking instead.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -58,31 +65,26 @@ export default {
   components: {},
   data() {
     return {
-      message: " ",
+      message: "",
       tempString: "",
       isCelsius: true,
       location: new Location(),
       weather: new Weather(),
       repo: new ReferencePointRepository(),
-      cookieManager: new CookieManager(),
+      cookieManager: new CookieManager()
     };
   },
   mounted() {
     if (!this.cookieManager.get("scale")) {
       this.cookieManager.set("scale", "c", 30);
     }
-    this.isCelsius = this.cookieManager.get('scale') === "c";
+    this.isCelsius = this.cookieManager.get("scale") === "c";
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.location.lock({
+        this.location.update({
           lon: position.coords.longitude,
           lat: position.coords.latitude
         });
-        this.updateWeather();
-      });
-    } else {
-      axios.get("http://ip-api.com/json").then(response => {
-        this.location.update(response.data);
         this.updateWeather();
       });
     }
@@ -96,10 +98,16 @@ export default {
     toggleScale() {
       this.isCelsius = !this.isCelsius;
       if (this.isCelsius) {
-        this.cookieManager.set('scale', 'c', 30);
+        this.cookieManager.set("scale", "c", 30);
       } else {
-        this.cookieManager.set('scale', 'f', 30);
+        this.cookieManager.set("scale", "f", 30);
       }
+    },
+    useIp() {
+      axios.get("http://ip-api.com/json").then(response => {
+        this.location.update(response.data);
+        this.updateWeather();
+      });
     },
     updateWeather() {
       let latitude = this.location.latitude;
@@ -156,7 +164,7 @@ a:hover {
   cursor: pointer;
 }
 .message-text {
-  margin: .5em;
+  margin: 0.5em;
   font-size: 2em;
   padding: 0;
   font-weight: 700;
@@ -193,5 +201,53 @@ a:hover {
   font-family: futura-pt-condensed, sans-serif;
   font-size: 1.5em;
   margin-top: 0.3em;
+}
+@media (max-width: 400px) {
+  .flex-wrapper {
+    display: block;
+  }
+  .app-container {
+    padding-bottom: 1em;
+  }
+  .row-wrapper {
+    display: block;
+  }
+  .desc-column {
+    border-top: 1px #444 solid;
+  }
+  .desc-column p {
+    border-left: 0px;
+    padding: 0;
+  }
+}
+
+.loading {
+  background: #212121;
+  z-index: 99;
+  text-align: center;
+  border-left: 1px solid #444;
+  border-bottom: 1px solid #444;
+  padding: 2em;
+}
+
+.loading-circle {
+  margin: 0 auto 2em auto;
+  height: 50px;
+  width: 50px;
+  border: 15px solid;
+  border-color: #f2f2f2 transparent #f2f2f2 transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.location-warning {
+  font-style: italic;
+  max-width: 300px;
+  text-align:left;
 }
 </style>
