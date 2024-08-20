@@ -6,7 +6,7 @@ The messages were taken from a survey that I posted on Reddit's [r/SampleSize](h
 
 Weather data provided by [OpenWeatherMap](http://openweathermap.org/).
 
-### [See it live on GitHub Pages.](https://mcaubrey.github.io/weather-vue)
+### [See it live on GitHub Pages.](https://michaelcharles.github.io/weather-vue)
 
 ## Project setup
 ```
